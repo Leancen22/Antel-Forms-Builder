@@ -1,0 +1,26 @@
+// prisma/schema.prisma
+datasource db {
+  provider = "postgresql" // o "mysql" según tu configuración en Vercel
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Form {
+  id          String     @id @default(uuid())
+  title       String
+  description String
+  components  Json
+  createdAt   DateTime   @default(now())
+  Responses   Response[] // Relación con las respuestas
+}
+
+model Response {
+  id         String   @id @default(uuid())
+  formId     String
+  form       Form     @relation(fields: [formId], references: [id])
+  answers    Json     // Guardamos las respuestas en formato JSON
+  createdAt  DateTime @default(now())
+}
