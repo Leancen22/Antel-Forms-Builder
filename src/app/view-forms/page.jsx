@@ -8,7 +8,6 @@ const ViewForms = () => {
   const [forms, setForms] = useState([]);
 
   useEffect(() => {
-    // Simulación de datos
     setForms([
       { id: 1, title: 'Form 1' },
       { id: 2, title: 'Form 2' },

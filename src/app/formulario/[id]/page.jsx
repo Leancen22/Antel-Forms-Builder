@@ -20,10 +20,9 @@ const Formulario = () => {
   const fetchForm = async () => {
     const response = await fetch(`/api/getFormById?id=${id}`);
     const data = await response.json();
-    // Asegurarse de que las opciones estén parseadas
     data.components = data.components.map(component => ({
       ...component,
-      options: component.options || [] // inicializar como array vacío si no hay opciones
+      options: component.options || []
     }));
     setForm(data);
   };
@@ -43,7 +42,7 @@ const Formulario = () => {
 
     if (response.ok) {
       alert('Respuestas guardadas correctamente');
-      router.push('/gracias'); // Redirigir a una página de agradecimiento
+      router.push('/gracias'); 
     } else {
       alert('Error al guardar las respuestas');
     }

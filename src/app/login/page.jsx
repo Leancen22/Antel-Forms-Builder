@@ -15,8 +15,7 @@ const LoginPage = () => {
     e.preventDefault();
     if (username === 'admin' && password === 'password123') {
       localStorage.setItem('authenticated', 'true');
-      router.push('/form-overview'); // Redirige a la página de overview de formularios
-    } else {
+      router.push('/form-overview');
       alert('Invalid username or password');
     }
   };
